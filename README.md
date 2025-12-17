@@ -4,6 +4,8 @@ Inspired by Tobi Lütke's [try](https://github.com/tobi/try)
 
 Building a version of `try` in Go and calling it `lab`
 
+Still Work in Progress. Will be adding more features!
+
 # Description
 
 All new project directories will be created in `~/lab/experiments` directory
