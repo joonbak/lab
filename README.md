@@ -2,7 +2,7 @@
 
 Inspired by Tobi Lütke's [try](https://github.com/tobi/try)
 
-Building a version of `try` in Go and calling it lab
+Building a version of `try` in Go and calling it `lab`
 
 # Description
 
