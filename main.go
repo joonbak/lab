@@ -26,4 +26,6 @@ func main() {
 
 	dir := currentDate + "-" + name
 	createDir(dir)
+	fmt.Println("Copy below command to go to directory")
+	fmt.Println("cd", dir)
 }
