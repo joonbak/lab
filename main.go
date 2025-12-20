@@ -49,7 +49,7 @@ func main() {
 		name = scanner.Text()
 	}
 
-	name = strings.ReplaceAll(name, " ", "-")
+	name = strings.ReplaceAll(strings.TrimSpace(name), " ", "-")
 
 	if name == "" {
 		fmt.Fprintln(os.Stderr, "Name connot be empty!")
