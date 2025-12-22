@@ -15,13 +15,14 @@ New project creates a directory with dates as the prefix like `2025-12-15-python
 # Quick Start
 
 ```bash
-# Clone the repo
-git clone https://github.com/joonbak/lab.git
+# Linux x86_64
+curl -sL https://github.com/joonbak/lab/releases/latest/download/lab-linux-amd64 -o lab
+chmod +x lab
+sudo mv lab /usr/local/bin/
 
-# Build the App
-go build .
-
-# Move the executable
+# Mac (Apple Silicon)
+curl -sL https://github.com/joonbak/lab/releases/latest/download/lab-darwin-arm64 -o lab
+chmod +x lab
 sudo mv lab /usr/local/bin/
 
 # Add to your shell (bash/zsh) '~/.zshrc'
