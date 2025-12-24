@@ -38,8 +38,8 @@ func createDir(dir string) {
 }
 
 func main() {
-	args := os.Args
-	if len(args) <= 1 {
+	args := os.Args[1:]
+	if len(args) == 0 {
 		currentDate := time.Now().Format("2006-01-02")
 		var name string
 
@@ -60,8 +60,8 @@ func main() {
 
 		dir := currentDate + "-" + name
 		createDir(dir)
-	} else if args[1] == "list" {
-		fmt.Println(args[1])
+	} else if args[0] == "list" {
+		fmt.Println(args[0])
 	} else {
 		fmt.Println("Please enter a valid command!")
 	}
