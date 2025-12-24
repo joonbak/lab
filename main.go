@@ -38,24 +38,31 @@ func createDir(dir string) {
 }
 
 func main() {
-	currentDate := time.Now().Format("2006-01-02")
-	var name string
+	args := os.Args
+	if len(args) <= 1 {
+		currentDate := time.Now().Format("2006-01-02")
+		var name string
 
-	fmt.Fprintln(os.Stderr, "Enter name of experiment:")
-	fmt.Fprintf(os.Stderr, "%s-", currentDate)
+		fmt.Fprintln(os.Stderr, "Enter name of experiment:")
+		fmt.Fprintf(os.Stderr, "%s-", currentDate)
 
-	scanner := bufio.NewScanner(os.Stdin)
-	if scanner.Scan() {
-		name = scanner.Text()
+		scanner := bufio.NewScanner(os.Stdin)
+		if scanner.Scan() {
+			name = scanner.Text()
+		}
+
+		name = strings.ReplaceAll(strings.TrimSpace(name), " ", "-")
+
+		if name == "" {
+			fmt.Fprintln(os.Stderr, "Name connot be empty!")
+			return
+		}
+
+		dir := currentDate + "-" + name
+		createDir(dir)
+	} else if args[1] == "list" {
+		fmt.Println(args[1])
+	} else {
+		fmt.Println("Please enter a valid command!")
 	}
-
-	name = strings.ReplaceAll(strings.TrimSpace(name), " ", "-")
-
-	if name == "" {
-		fmt.Fprintln(os.Stderr, "Name connot be empty!")
-		return
-	}
-
-	dir := currentDate + "-" + name
-	createDir(dir)
 }
