@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	tea "github.com/charmbracelet/bubbletea"
 )
 
 func createDir(dir string) {
@@ -61,7 +63,11 @@ func main() {
 		dir := currentDate + "-" + name
 		createDir(dir)
 	} else if args[0] == "list" {
-		fmt.Println(args[0])
+		p := tea.NewProgram(initialModel())
+		if _, err := p.Run(); err != nil {
+			fmt.Printf("Alas, there's been an error: %v", err)
+			os.Exit(1)
+		}
 	} else {
 		fmt.Println("Please enter a valid command!")
 	}
