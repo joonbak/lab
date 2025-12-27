@@ -27,6 +27,18 @@ sudo mv lab /usr/local/bin/
 
 # Add to your shell (bash/zsh) '~/.zshrc'
 lab() {
-  eval "$(/usr/local/bin/lab "$@" 2>/dev/tty)"
+  local output
+
+  if [ $# -eq 0 ]; then
+    output="$(/usr/local/bin/lab 2>/dev/tty)"
+  else
+    output="$(/usr/local/bin/lab "$@" 3>&1 >/dev/tty 2>&1)"
+  fi
+
+  if printf "%s" "$output" | grep -q "^cd "; then
+    eval "$output"
+  elif [ -n "$output" ]; then
+    printf "%s\n" "$output"
+  fi
 }
 ```
