@@ -65,10 +65,10 @@ func main() {
 	} else if args[0] == "list" {
 		p := tea.NewProgram(initialModel())
 		if _, err := p.Run(); err != nil {
-			fmt.Printf("Alas, there's been an error: %v", err)
+			fmt.Fprintf(os.Stderr, "Alas, there's been an error: %v", err)
 			os.Exit(1)
 		}
 	} else {
-		fmt.Println("Please enter a valid command!")
+		fmt.Fprintln(os.Stderr, "Please enter a valid command!")
 	}
 }
