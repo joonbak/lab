@@ -64,10 +64,22 @@ func main() {
 		createDir(dir)
 	} else if args[0] == "list" {
 		p := tea.NewProgram(initialModel())
-		if _, err := p.Run(); err != nil {
+		finalModel, err := p.Run()
+		if err != nil {
 			fmt.Fprintf(os.Stderr, "Alas, there's been an error: %v", err)
 			os.Exit(1)
 		}
+
+		// After TUI exits, print the cd command if a directory was selected
+		if m, ok := finalModel.(model); ok && m.selectedDir != "" {
+			// Open file descriptor 3
+			f := os.NewFile(3, "fd3")
+			if f != nil {
+				fmt.Fprintf(f, "cd ~/lab/experiments/%s\n", m.selectedDir)
+				f.Close()
+			}
+		}
+
 	} else {
 		fmt.Fprintln(os.Stderr, "Please enter a valid command!")
 	}

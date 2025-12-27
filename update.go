@@ -41,6 +41,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.selected[m.cursor] = struct{}{}
 			}
 
+		case "g":
+			m.selectedDir = m.choices[m.cursor]
+			return m, tea.Quit
+
 		case "d":
 			// Build a new slice without selected items
 

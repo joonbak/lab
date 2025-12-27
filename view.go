@@ -37,7 +37,7 @@ func (m model) View() string {
 	}
 
 	// The footer
-	s += "\nq" + faint.Render(" quit ") + "d" + faint.Render(" delete ") + "j/k" + faint.Render(" down/up ") + "enter" + faint.Render(" select\n")
+	s += "\nq" + faint.Render(" quit ") + "g" + faint.Render(" go to ") + "d" + faint.Render(" delete ") + "j/k" + faint.Render(" down ") + "enter" + faint.Render(" select\n")
 
 	// Send the UI for rendering
 	return s

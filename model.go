@@ -10,9 +10,10 @@ import (
 )
 
 type model struct {
-	choices  []string
-	cursor   int
-	selected map[int]struct{}
+	cursor      int
+	choices     []string
+	selected    map[int]struct{}
+	selectedDir string
 }
 
 func initialModel() model {
@@ -52,9 +53,9 @@ func initialModel() model {
 		choices = append(choices, d.name)
 	}
 	return model{
-		choices: choices,
-
-		selected: make(map[int]struct{}),
+		choices:     choices,
+		selected:    make(map[int]struct{}),
+		selectedDir: "",
 	}
 }
 
