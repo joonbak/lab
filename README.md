@@ -12,6 +12,18 @@ All new project directories will be created in `~/lab/experiments` directory
 
 New project creates a directory with dates as the prefix like `2025-12-15-python-experiment`
 
+## Usage
+
+```bash
+# Create new experiment directory
+lab
+
+# List all lab experiments
+lab list
+```
+
+"lab list" will show a TUI with commands to select, delete and go to directory.
+
 ## Quick Start
 
 ```bash
